@@ -21,12 +21,17 @@
      <% end %>
    </div>
    <div>
+   </div>
+   <% flash.each do |key, value| %>
+     <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+   <% end %>
+   
+   <%= yield %>
+   
      <script>
        $(function(){
          $(".alert")fadeOut(3000);
        });
      </script>
-   </div>
-   <%= yield %>
   </body>
 </html>
