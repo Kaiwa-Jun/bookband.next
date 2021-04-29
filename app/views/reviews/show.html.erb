@@ -1,0 +1,23 @@
+<h1>レビュー詳細ページ</h1>
+
+<p><%= @book.title %></p>
+<p><%= @book.author %></p>
+<p><%= image_tag @book.image_url %></p>
+
+<h3><%= @review.user.email %></h3>
+<h3><%= @review.content %></h3>
+
+
+<h3>いいね件数: <%= @review.likes.count %></h3>
+<% if current_user.already_liked?(@review) %>
+  <%= button_to 'いいねを取り消す', review_like_path(@review), method: :delete %>
+<% else %>
+  <%= button_to 'いいね', review_likes_path(@review) %>
+<% end %>
+
+<h3>いいねしたユーザー</h3>
+<% @review.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<%= link_to "レビュー一覧へ戻る", reviews_path %>

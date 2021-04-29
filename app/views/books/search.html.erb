@@ -1,0 +1,21 @@
+<p>本のタイトルで検索</p>
+<%= form_tag(books_search_path, method: :get) do %> <!--検索入力フォーム-->
+  <%= text_field_tag :title, @title %> <!--タイトル入力テキストボックス-->
+  <%= button_tag type: "submit" %>
+
+<p>本のジャンルで検索</p>
+  <% @genres.each do |genre| %>
+    <%= link_to genre[:name], books_search_path(book_genre_id: genre[:id]) %>
+  <% end %>
+<% end %>
+<!--検索結果の表示（画像、タイトル、著者名、商品説明）-->
+ <!--link_toメソッドとネスト(do〜end)でタイトル等クリックできる-->
+<% if @books %>
+  <% @books.each do |book| %>
+    <%= link_to reviews_new_path(book_id: book.id) do %> 
+      <%= image_tag book.image_url %>
+      <%= book.title %>
+      <%= book.author%>
+    <% end %>
+  <% end %>
+<% end %>

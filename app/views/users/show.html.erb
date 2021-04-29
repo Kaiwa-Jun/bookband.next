@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<h1>ユーザー詳細ページ</h1>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<h2>投稿内容</h2>
+<% @user.reviews.each do |review| %>
+  <a href="/reviews/<%= review.id %>"><%= review.content %></a>
+  <hr>
+<% end %>
+
+<h3>いいねしている投稿</h3>
+<% @user.liked_reviews.each do |review| %>
+  <%= review.user.email %>
+  <%= review.content %>
+<% end %>
+
+<%= link_to '編集', edit_user_path(@user) %> |
+<%= link_to '戻る', users_path %>

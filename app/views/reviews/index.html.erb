@@ -1,0 +1,23 @@
+<h1>レビュー一覧</h1>
+     
+<p><%= @book.title %></p>
+<p><%= @book.author %></p>
+<p><%= image_tag @book.image_url %></p>
+
+<%= @ranks.each do |review| %>
+  <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
+  <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
+  
+<% end %>
+  
+<%= @reviews.each do |review| %>
+  <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
+  <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
+  
+   
+     <div class="nondisplayFrame">
+       <%= review.book_id %>
+       <%= review.created_at %>
+       <%= review.updated_at %> 
+     </div>
+<% end %>
