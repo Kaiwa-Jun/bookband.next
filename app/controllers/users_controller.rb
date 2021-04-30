@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    # respond_to do |format|
       if @user.save
         redirect_to root_path, success: '登録が完了しました'
         # format.html { redirect_to @user, success: "登録が完了しました" }
