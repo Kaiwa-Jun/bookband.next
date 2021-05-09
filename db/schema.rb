@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_022650) do
+ActiveRecord::Schema.define(version: 2021_05_04_142346) do
 
   create_table "books", primary_key: "isbn", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2021_04_19_022650) do
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
     t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
@@ -75,10 +74,12 @@ ActiveRecord::Schema.define(version: 2021_04_19_022650) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "likes", "reviews"
   add_foreign_key "likes", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "taggings", "tags"
 end

@@ -3,11 +3,6 @@ class ReviewsController < ApplicationController
     @book = Book.find_by(isbn: params[:isbn]) #createのindexアクションへのリダイレクトでisbnという名前でbook_id渡すためparams[:isbn]
     @reviews = @book.reviews.order(created_at: "DESC") #更新順に表示
     @ranks = Review.find(Like.group(:review_id).order('count(review_id) DESC').pluck(:review_id)) #いいね多い順に表示
-    
-    # タグの絞り込み
-    if params[:tag_name]
-      @reviews = Review.tagged_with("#{params[:tag_name]}")
-    end
   end
   
   def new
@@ -33,6 +28,6 @@ class ReviewsController < ApplicationController
   
   private
     def review_params
-      params.require(:review).permit(:content, :book_id, :tag_list)
+      params.require(:review).permit(:content, :book_id)
     end
 end
