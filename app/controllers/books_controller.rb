@@ -23,9 +23,6 @@ class BooksController < ApplicationController
           book.save
         end
       end
-    else
-      flash.now[:danger] = '検索に失敗しました'
-      render :search
     end
     
     if params[:book_genre_id]
