@@ -42,6 +42,8 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_girl_rails', '~> 4.2.1'
 end
 
 group :development do
@@ -59,6 +61,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'faker', '~> 1.1.2'
+  gem 'database_cleaner', '~> 1.0.1'
+  gem 'launchy', '~> 2.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
