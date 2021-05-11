@@ -4,9 +4,8 @@ class ReviewsController < ApplicationController
     @book = Book.find_by(isbn: params[:book_id]) #createのindexアクションへのリダイレクトでisbnという名前でbook_id渡すためparams[:isbn]
     @reviews = Review.all.order(created_at: "DESC") #更新順に表示
     @ranks = Review.find(Like.group(:review_id).order('count(review_id) DESC').pluck(:review_id)) #いいね多い順に表示
-    
     if params[:tag_name]
-       @reviews = Review.tagged_with("#{params[:tag_name]}")
+      @reviews = Review.tagged_with("#{params[:tag_name]}")
     end
   end
   

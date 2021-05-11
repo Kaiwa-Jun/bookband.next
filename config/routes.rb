@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # post   '/reviews/new' => 'reviews#new' 
   get '/reviews/:book_id/new' => 'reviews#new', as:'reviews_new'
   post '/reviews/:book_id/create' => 'reviews#create', as:'reviews_create'
-  get '/reviews/tag_list/:id' => 'books#tag_search'
+
+  get '/reviews/tag_list/:id' => 'reviews#index'
 
   root 'user_sessions#new'
 # root 'reviews#new'  
