@@ -1,5 +1,4 @@
 class Review < ApplicationRecord
-  acts_as_taggable
   belongs_to :user
   belongs_to :book, primary_key: "isbn"
   validates :content, {presence: true, length: {maximum: 50} }

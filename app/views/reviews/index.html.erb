@@ -8,7 +8,7 @@
 <%= @ranks.each do |review| %>
   <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
   <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
-  <a href="/reviews/tag_list/<%= review.id %>"><%= review.tag_list %></a>
+  
 <% end %>
   
 <%= @reviews.each do |review| %>
