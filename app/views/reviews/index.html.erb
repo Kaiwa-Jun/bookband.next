@@ -15,7 +15,7 @@
   <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
   <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
   <!--タグ表示欄-->
-  <a href="/reviews/tag_list/<%= review.id %>"><%= review.tag_list %></a>
+  <td><%= render 'reviews/tag_list', tag_list: review.tag_list %></td>
    
      <div class="nondisplayFrame">
        <%= review.book_id %>

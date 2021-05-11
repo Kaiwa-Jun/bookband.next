@@ -30,7 +30,14 @@ class BooksController < ApplicationController
     end
   end
   
+  def tag_search
       # binding.pry
+    @book = Book.find_by(isbn: params[:isbn])
+    if params[:tag_name]
+      @reviews = Review.tagged_with("#{params[:tag_name]}")
+    end
+  end
+  
   
   private #class内でのみアクセス可能
   def read(result) #楽天APIから取得したデータの絞り込み（タイトル、著者名、URL、ISBN、画像、ジャンル、商品説明）
