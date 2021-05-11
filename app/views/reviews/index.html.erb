@@ -1,5 +1,5 @@
+
 <h1>レビュー一覧</h1>
-<!--% binding.pry %-->
      
 <p><%= @book.title %></p>
 <p><%= @book.author %></p>
@@ -14,8 +14,9 @@
 <%= @reviews.each do |review| %>
   <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
   <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
-  <!--タグ表示欄-->
-  <td><%= render 'reviews/tag_list', tag_list: review.tag_list %></td>
+<!--タグ表示欄-->
+  <a href="/reviews/tag_list/<%= review.id %>"><%= review.tag_list %></a>
+
    
      <div class="nondisplayFrame">
        <%= review.book_id %>
