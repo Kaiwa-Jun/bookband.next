@@ -1,6 +1,5 @@
-
 <h1>レビュー一覧</h1>
-     
+
 <p><%= @book.title %></p>
 <p><%= @book.author %></p>
 <p><%= image_tag @book.image_url %></p>
@@ -8,17 +7,12 @@
 <%= @ranks.each do |review| %>
   <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
   <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
-  <a href="/reviews/tag_list/<%= review.id %>"><%= review.tag_list %></a>
+  <%= render 'reviews/tag_list', tag_list: review.tag_list, isbn: review.book.isbn %>
 <% end %>
-  
+
 <%= @reviews.each do |review| %>
   <a href="/users/<%= review.user.id %>"><%= review.user.email %></a>
   <p><a href="/reviews/<%= review.id %>"><%= review.content %></a><%= review.liked_users.count %></p>
-  <a href="/reviews/tag_list/<%= review.id %>"><%= review.tag_list %></a><!--タグ表示欄-->
-   
-     <div class="nondisplayFrame">
-       <%= review.book_id %>
-       <%= review.created_at %>
-       <%= review.updated_at %> 
-     </div>
+  <%= render 'reviews/tag_list', tag_list: review.tag_list, isbn: review.book.isbn %>
+
 <% end %>
