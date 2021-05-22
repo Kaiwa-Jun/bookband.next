@@ -10,3 +10,6 @@
 
 # Visual Studio code 練習
 練習です
+
+github上で変更
+pullしてみる
