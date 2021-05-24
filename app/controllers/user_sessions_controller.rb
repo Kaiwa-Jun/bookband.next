@@ -9,6 +9,7 @@ class UserSessionsController < ApplicationController
     @user = User.new
   end
 
+
   def create
     @user = login(params[:email], params[:password])
     if @user
